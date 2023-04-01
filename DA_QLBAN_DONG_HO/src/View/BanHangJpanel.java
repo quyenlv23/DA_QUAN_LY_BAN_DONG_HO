@@ -76,7 +76,7 @@ public class BanHangJpanel extends javax.swing.JPanel {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("Table hóa đơn");
+        jLabel1.setText("Table Đơn hàng ");
 
         btTatcahoadon.setText("Tất cả");
 

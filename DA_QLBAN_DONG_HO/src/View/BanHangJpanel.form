@@ -132,7 +132,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Table h&#xf3;a &#x111;&#x1a1;n"/>
+                <Property name="text" type="java.lang.String" value="Table &#x110;&#x1a1;n h&#xe0;ng "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="btTatcahoadon">
