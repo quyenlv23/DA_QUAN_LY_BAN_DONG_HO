@@ -4,10 +4,12 @@
  */
 package Repository.Interface;
 
+import DomainModel.NhanVien;
+
 /**
  *
  * @author mr.quyen
  */
 public interface NhanVienRepositoryInterface {
-    
+    public NhanVien getNhanVien(String email, String matKhau);
 }
