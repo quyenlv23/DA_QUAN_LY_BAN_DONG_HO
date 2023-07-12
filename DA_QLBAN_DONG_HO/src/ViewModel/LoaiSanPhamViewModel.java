@@ -41,7 +41,7 @@ public class LoaiSanPhamViewModel {
 
     @Override
     public String toString() {
-        return "LoaiSanPham{" + "maLoaiSanPham=" + maLoaiSanPham + ", tenLoaiSanPham=" + tenLoaiSanPham + '}';
+        return tenLoaiSanPham;
     }
 
 }

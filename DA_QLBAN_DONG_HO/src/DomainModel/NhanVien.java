@@ -10,20 +10,20 @@ package DomainModel;
  */
 public class NhanVien {
 
-    private Integer maNhanVien;
+     private Integer maNhanVien;
     private String hoTen;
-    private boolean gioiTinh;
+    private int gioiTinh;
     private String diaChi;
     private String soDienThoai;
     private String email;
     private String matKhau;
-    private double trangThai;
+    private int trangThai;
     private String chucVu;
 
     public NhanVien() {
     }
 
-    public NhanVien(Integer maNhanVien, String hoTen, boolean gioiTinh, String diaChi, String soDienThoai, String email, String matKhau, double trangThai, String chucVu) {
+    public NhanVien(Integer maNhanVien, String hoTen, int gioiTinh, String diaChi, String soDienThoai, String email, String matKhau, int trangThai, String chucVu) {
         this.maNhanVien = maNhanVien;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
@@ -51,11 +51,11 @@ public class NhanVien {
         this.hoTen = hoTen;
     }
 
-    public boolean isGioiTinh() {
+    public int getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(boolean gioiTinh) {
+    public void setGioiTinh(int gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
@@ -91,11 +91,11 @@ public class NhanVien {
         this.matKhau = matKhau;
     }
 
-    public double getTrangThai() {
+    public int getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(double trangThai) {
+    public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
 
@@ -112,4 +112,5 @@ public class NhanVien {
         return "NhanVien{" + "maNhanVien=" + maNhanVien + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", soDienThoai=" + soDienThoai + ", email=" + email + ", matKhau=" + matKhau + ", trangThai=" + trangThai + ", chucVu=" + chucVu + '}';
     }
 
+    
 }

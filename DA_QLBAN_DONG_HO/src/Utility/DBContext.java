@@ -18,7 +18,7 @@ public class DBContext {
 
     public static final String PASSWORD = "123456"; 
 
-    public static final String DATABASE_NAME = "UNG_DUNG_QUAN_LY_QUAN_TRA_SUA";
+    public static final String DATABASE_NAME = "UNG_DUNG_QUAN_LY_DONG_HO";
 
     public static final Boolean USING_SSL = false;
 
@@ -52,7 +52,7 @@ public class DBContext {
             if (connection == null) {
                 connection = DriverManager.getConnection(CONNECT_STRING);
                 DatabaseMetaData metaData = connection.getMetaData();
-                System.out.println("Connection to database successfull");
+                System.out.println("Connection to database successfully");
                 System.out.println("Driver name: " + metaData.getDriverName());
                 System.out.println("Driver version: " + metaData.getDriverVersion());
                 System.out.println("Product name: " + metaData.getDatabaseProductName());

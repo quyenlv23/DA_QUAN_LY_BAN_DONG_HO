@@ -41,7 +41,7 @@ public class MauSacViewModel {
 
     @Override
     public String toString() {
-        return "MauSac{" + "maMauSac=" + maMauSac + ", tenMauSac=" + tenMauSac + '}';
+        return tenMauSac;
     }
 
 }

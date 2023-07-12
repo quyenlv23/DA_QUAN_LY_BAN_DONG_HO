@@ -13,17 +13,17 @@ public class HoaDonChiTiet {
     private HoaDon hoaDon;
     private SanPham sanPham;
     private Integer soLuong;
-    private Double thanhTien;
+    private Double donGia;
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(String maHoaDonChiTiet, HoaDon hoaDon, SanPham sanPham, Integer soLuong, Double thanhTien) {
+    public HoaDonChiTiet(String maHoaDonChiTiet, HoaDon hoaDon, SanPham sanPham, Integer soLuong, Double donGia) {
         this.maHoaDonChiTiet = maHoaDonChiTiet;
         this.hoaDon = hoaDon;
         this.sanPham = sanPham;
         this.soLuong = soLuong;
-        this.thanhTien = thanhTien;
+        this.donGia = donGia;
     }
 
     public String getMaHoaDonChiTiet() {
@@ -58,18 +58,20 @@ public class HoaDonChiTiet {
         this.soLuong = soLuong;
     }
 
-    public Double getThanhTien() {
-        return thanhTien;
+    public Double getDonGia() {
+        return donGia;
     }
 
-    public void setThanhTien(Double thanhTien) {
-        this.thanhTien = thanhTien;
+    public void setDonGia(Double donGia) {
+        this.donGia = donGia;
     }
 
     @Override
     public String toString() {
-        return "HoaDonChiTiet{" + "maHoaDonChiTiet=" + maHoaDonChiTiet + ", hoaDon=" + hoaDon + ", sanPham=" + sanPham + ", soLuong=" + soLuong + ", thanhTien=" + thanhTien + '}';
+        return "HoaDonChiTiet{" + "maHoaDonChiTiet=" + maHoaDonChiTiet + ", hoaDon=" + hoaDon + ", sanPham=" + sanPham + ", soLuong=" + soLuong + ", donGia=" + donGia + '}';
     }
+
+  
     
     
     

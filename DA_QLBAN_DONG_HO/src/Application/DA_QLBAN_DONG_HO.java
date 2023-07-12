@@ -4,13 +4,14 @@
  */
 package Application;
 import Utility.DBContext;
+import View.DangNhap;
 
 
 public class DA_QLBAN_DONG_HO {
 
   
     public static void main(String[] args) {
-        DBContext.getConnection();
+       new DangNhap().setVisible(true);
     }
     
 }

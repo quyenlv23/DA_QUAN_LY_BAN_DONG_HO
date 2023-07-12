@@ -114,7 +114,10 @@ public class SanPham {
     }
 
     public boolean isTinhTrang() {
-        return tinhTrang;
+      if(soLuong==0){
+            return tinhTrang;
+      }
+      return tinhTrang;
     }
 
     public void setTinhTrang(boolean tinhTrang) {

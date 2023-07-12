@@ -4,24 +4,23 @@
  */
 package ViewModel;
 
-
 import java.util.Date;
 
 public class HoaDonViewModel {
 
     private Integer maHoaDon;
-    private NhanVienViewModel nhanVien;
-    private KhachHangViewModel khachHang;
+    private String nhanVien;
+    private String khachHang;
     private Date ngayTao;
     private Double tongTien;
-    private boolean trangThai;
+    private Integer trangThai;
     private Date ngayThanhToan;
     private String ghiChu;
 
     public HoaDonViewModel() {
     }
 
-    public HoaDonViewModel(Integer maHoaDon, NhanVienViewModel nhanVien, KhachHangViewModel khachHang, Date ngayTao, Double tongTien, boolean trangThai, Date ngayThanhToan, String ghiChu) {
+    public HoaDonViewModel(Integer maHoaDon, String nhanVien, String khachHang, Date ngayTao, Double tongTien, Integer trangThai, Date ngayThanhToan, String ghiChu) {
         this.maHoaDon = maHoaDon;
         this.nhanVien = nhanVien;
         this.khachHang = khachHang;
@@ -40,19 +39,19 @@ public class HoaDonViewModel {
         this.maHoaDon = maHoaDon;
     }
 
-    public NhanVienViewModel getNhanVien() {
+    public String getNhanVien() {
         return nhanVien;
     }
 
-    public void setNhanVien(NhanVienViewModel nhanVien) {
+    public void setNhanVien(String nhanVien) {
         this.nhanVien = nhanVien;
     }
 
-    public KhachHangViewModel getKhachHang() {
+    public String getKhachHang() {
         return khachHang;
     }
 
-    public void setKhachHang(KhachHangViewModel khachHang) {
+    public void setKhachHang(String khachHang) {
         this.khachHang = khachHang;
     }
 
@@ -72,11 +71,18 @@ public class HoaDonViewModel {
         this.tongTien = tongTien;
     }
 
-    public boolean isTrangThai() {
-        return trangThai;
+    public String getTrangThai() {
+         if (trangThai==0) {
+            return "Chưa Thanh Toán";
+        }else if(trangThai==1){
+            return "Đã Hủy";
+        }else{
+            return "Đã Thanh Toán";
+        }
     }
+    
 
-    public void setTrangThai(boolean trangThai) {
+    public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
     }
 
@@ -98,7 +104,7 @@ public class HoaDonViewModel {
 
     @Override
     public String toString() {
-        return "HoaDon{" + "maHoaDon=" + maHoaDon + ", nhanVien=" + nhanVien + ", khachHang=" + khachHang + ", ngayTao=" + ngayTao + ", tongTien=" + tongTien + ", trangThai=" + trangThai + ", ngayThanhToan=" + ngayThanhToan + ", ghiChu=" + ghiChu + '}';
+        return "HoaDonViewModel{" + "maHoaDon=" + maHoaDon + ", nhanVien=" + nhanVien + ", khachHang=" + khachHang + ", ngayTao=" + ngayTao + ", tongTien=" + tongTien + ", trangThai=" + trangThai + ", ngayThanhToan=" + ngayThanhToan + ", ghiChu=" + ghiChu + '}';
     }
 
 }

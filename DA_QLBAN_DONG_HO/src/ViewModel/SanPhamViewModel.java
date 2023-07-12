@@ -13,10 +13,10 @@ package ViewModel;
 public class SanPhamViewModel {
 
     private Integer maSanPham;
-    private SizeViewModel size;
-    private ChatLieuViewModel chatLieu;
-    private MauSacViewModel mauSac;
-    private LoaiSanPhamViewModel loaiSanPham;
+    private String size;
+    private String chatLieu;
+    private String mauSac;
+    private String loaiSanPham;
     private String tenSanPham;
     private String maMay;
     private Double giaNhap;
@@ -28,7 +28,7 @@ public class SanPhamViewModel {
     public SanPhamViewModel() {
     }
 
-    public SanPhamViewModel(Integer maSanPham, SizeViewModel size, ChatLieuViewModel chatLieu, MauSacViewModel mauSac, LoaiSanPhamViewModel loaiSanPham, String tenSanPham, String maMay, Double giaNhap, Double GiaBan, boolean tinhTrang, Integer soLuong, String moTa) {
+    public SanPhamViewModel(Integer maSanPham, String size, String chatLieu, String mauSac, String loaiSanPham, String tenSanPham, String maMay, Double giaNhap, Double GiaBan, boolean tinhTrang, Integer soLuong, String moTa) {
         this.maSanPham = maSanPham;
         this.size = size;
         this.chatLieu = chatLieu;
@@ -51,35 +51,35 @@ public class SanPhamViewModel {
         this.maSanPham = maSanPham;
     }
 
-    public SizeViewModel getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(SizeViewModel size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
-    public ChatLieuViewModel getChatLieu() {
+    public String getChatLieu() {
         return chatLieu;
     }
 
-    public void setChatLieu(ChatLieuViewModel chatLieu) {
+    public void setChatLieu(String chatLieu) {
         this.chatLieu = chatLieu;
     }
 
-    public MauSacViewModel getMauSac() {
+    public String getMauSac() {
         return mauSac;
     }
 
-    public void setMauSac(MauSacViewModel mauSac) {
+    public void setMauSac(String mauSac) {
         this.mauSac = mauSac;
     }
 
-    public LoaiSanPhamViewModel getLoaiSanPham() {
+    public String getLoaiSanPham() {
         return loaiSanPham;
     }
 
-    public void setLoaiSanPham(LoaiSanPhamViewModel loaiSanPham) {
+    public void setLoaiSanPham(String loaiSanPham) {
         this.loaiSanPham = loaiSanPham;
     }
 
@@ -141,7 +141,12 @@ public class SanPhamViewModel {
 
     @Override
     public String toString() {
-        return "SanPham{" + "maSanPham=" + maSanPham + ", size=" + size + ", chatLieu=" + chatLieu + ", mauSac=" + mauSac + ", loaiSanPham=" + loaiSanPham + ", tenSanPham=" + tenSanPham + ", maMay=" + maMay + ", giaNhap=" + giaNhap + ", GiaBan=" + GiaBan + ", tinhTrang=" + tinhTrang + ", soLuong=" + soLuong + ", moTa=" + moTa + '}';
+        return "SanPhamViewModel{" + "maSanPham=" + maSanPham + ", size=" + size + ", chatLieu=" + chatLieu + ", mauSac=" + mauSac + ", loaiSanPham=" + loaiSanPham + ", tenSanPham=" + tenSanPham + ", maMay=" + maMay + ", giaNhap=" + giaNhap + ", GiaBan=" + GiaBan + ", tinhTrang=" + tinhTrang + ", soLuong=" + soLuong + ", moTa=" + moTa + '}';
+    }
+     public Object[] toDataRow() {
+        return new Object[]{maSanPham ,tenSanPham, giaNhap, GiaBan,soLuong};
     }
 
+    
+    
 }

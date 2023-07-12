@@ -11,21 +11,20 @@ package ViewModel;
  * @author mr.quyen
  */
 public class NhanVienViewModel {
-
-    private Integer maNhanVien;
+ private Integer maNhanVien;
     private String hoTen;
-    private boolean gioiTinh;
+    private int gioiTinh;
     private String diaChi;
     private String soDienThoai;
     private String email;
     private String matKhau;
-    private double trangThai;
+    private int trangThai;
     private String chucVu;
 
     public NhanVienViewModel() {
     }
 
-    public NhanVienViewModel(Integer maNhanVien, String hoTen, boolean gioiTinh, String diaChi, String soDienThoai, String email, String matKhau, double trangThai, String chucVu) {
+    public NhanVienViewModel(Integer maNhanVien, String hoTen, int gioiTinh, String diaChi, String soDienThoai, String email, String matKhau, int trangThai, String chucVu) {
         this.maNhanVien = maNhanVien;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
@@ -37,6 +36,8 @@ public class NhanVienViewModel {
         this.chucVu = chucVu;
     }
 
+    
+
     public Integer getMaNhanVien() {
         return maNhanVien;
     }
@@ -45,6 +46,7 @@ public class NhanVienViewModel {
         this.maNhanVien = maNhanVien;
     }
 
+   
     public String getHoTen() {
         return hoTen;
     }
@@ -53,13 +55,15 @@ public class NhanVienViewModel {
         this.hoTen = hoTen;
     }
 
-    public boolean isGioiTinh() {
+    public int getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(boolean gioiTinh) {
+    public void setGioiTinh(int gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
+
+    
 
     public String getDiaChi() {
         return diaChi;
@@ -93,13 +97,16 @@ public class NhanVienViewModel {
         this.matKhau = matKhau;
     }
 
-    public double getTrangThai() {
+    public int getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(double trangThai) {
+    public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+
+   
+    
 
     public String getChucVu() {
         return chucVu;
@@ -113,5 +120,6 @@ public class NhanVienViewModel {
     public String toString() {
         return "NhanVien{" + "maNhanVien=" + maNhanVien + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", soDienThoai=" + soDienThoai + ", email=" + email + ", matKhau=" + matKhau + ", trangThai=" + trangThai + ", chucVu=" + chucVu + '}';
     }
+
 
 }
