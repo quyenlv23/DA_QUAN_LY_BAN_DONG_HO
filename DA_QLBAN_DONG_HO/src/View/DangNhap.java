@@ -4,8 +4,14 @@
  */
 package View;
 
+import DomainModel.NhanVien;
+import Service.Implement.NhanVienServiceImplement;
+import Service.Interface.NhanVienServiceInterface;
+import javax.swing.JOptionPane;
 
 public class DangNhap extends javax.swing.JFrame {
+
+    private NhanVienServiceInterface nhanVienServiceInterface = new NhanVienServiceImplement();
 
     /**
      * Creates new form DangNhap
@@ -13,6 +19,22 @@ public class DangNhap extends javax.swing.JFrame {
     public DangNhap() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    public NhanVien getDataNhanVien() {
+        String email = username.getText();
+        String matKhau = password.getText();
+        NhanVien nhanVien = new NhanVien();
+        nhanVien.setEmail(email);
+        nhanVien.setMatKhau(matKhau);
+        return nhanVien;
+    }
+
+    //ham tra ve 1 nhan vien
+    public NhanVien traVeNhanVien(String email) {
+        NhanVien nhanVien = new NhanVien();
+        nhanVien = nhanVienServiceInterface.getAllForName(email);
+        return nhanVien;
     }
 
     /**
@@ -34,6 +56,7 @@ public class DangNhap extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
@@ -61,10 +84,22 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel3.setText("Password");
 
         jButton1.setText("Đăng Nhập");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setText("Quên mật khẩu?");
+        jLabel4.setText("Chưa tài khoản? ");
+
+        jButton2.setText("Đăng ký");
 
         jButton3.setText("Quên mật khẩu ");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -74,6 +109,10 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(105, 105, 105))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -86,20 +125,18 @@ public class DangNhap extends javax.swing.JFrame {
                                     .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                                     .addComponent(username)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addComponent(jButton1)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 4, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(105, 105, 105))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)
-                                .addGap(86, 86, 86))))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(8, 8, 8))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(91, 91, 91)
+                                        .addComponent(jButton1)))
+                                .addComponent(jButton3)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,6 +161,7 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
+                    .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
@@ -135,7 +173,7 @@ public class DangNhap extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,6 +185,38 @@ public class DangNhap extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        NhanVien nhanVien = getDataNhanVien();
+        if (nhanVienServiceInterface.checkEmail(nhanVien.getEmail())) {
+            // kiểm tra pass có tồn tại trong data không
+            if (nhanVienServiceInterface.checkPass(nhanVien.getMatKhau())) {
+                setVisible(false);
+                new TrangChu().setVisible(true);
+
+                //phân quyền nhân viên với quản lý
+                if ("Nhân viên".equalsIgnoreCase(traVeNhanVien(nhanVien.getEmail()).getChucVu())) {
+                    // disdebale các chức năng không phải của nhân viên
+//                    JOptionPane.showMessageDialog(this, "chức năng nhân viên");
+                    
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "sai mật khẩu");
+                password.setText("");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "email không tồn tại");
+            username.setText("");
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new QuenMatKhau().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,6 +244,7 @@ public class DangNhap extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -185,6 +256,7 @@ public class DangNhap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

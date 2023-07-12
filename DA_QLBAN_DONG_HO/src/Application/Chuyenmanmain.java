@@ -10,8 +10,8 @@ import View.KhachHangJpanel;
 import View.KhuyenMaiJpanel;
 import View.NhanVienJpanel;
 import View.SanPhamJpanel;
-
 import View.ThongKeJpanel;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -88,6 +88,7 @@ public class Chuyenmanmain {
                 case "KhachHang":
                     node = new KhachHangJpanel();
                     break;
+
             }
             root.removeAll();
             root.setLayout(new BorderLayout());
@@ -106,7 +107,7 @@ public class Chuyenmanmain {
 
         @Override
         public void mouseReleased(MouseEvent e) {
-   
+
         }
 
         @Override

@@ -41,7 +41,7 @@ public class SizeViewModel {
 
     @Override
     public String toString() {
-        return "Size{" + "masize=" + masize + ", tenSize=" + tenSize + '}';
+        return tenSize;
     }
 
 }

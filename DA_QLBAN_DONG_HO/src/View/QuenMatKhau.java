@@ -4,11 +4,26 @@
  */
 package View;
 
+import Service.Implement.NhanVienServiceImplement;
+import Service.Interface.NhanVienServiceInterface;
+import java.util.Properties;
+import javax.swing.JOptionPane;
+import java.util.Random;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 /**
  *
  * @author mr.quyen
  */
 public class QuenMatKhau extends javax.swing.JFrame {
+
+    private NhanVienServiceInterface nhanVienServiceInterface = new NhanVienServiceImplement();
 
     /**
      * Creates new form QuenMatKhau
@@ -16,6 +31,18 @@ public class QuenMatKhau extends javax.swing.JFrame {
     public QuenMatKhau() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+    public int traVeMaOTP(){
+        // Khởi tạo đối tượng Random
+            Random random = new Random();
+
+            // Tạo số ngẫu nhiên trong dải từ 1000 đến 9999
+            int randomNumber = random.nextInt(9000) + 1000;
+            return  randomNumber;
+    }
+    
+    public int otpp(int otp){
+        return otp;
     }
 
     /**
@@ -57,6 +84,11 @@ public class QuenMatKhau extends javax.swing.JFrame {
         jLabel2.setText("Email");
 
         jButton1.setText("Lấy mã");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("OTP");
 
@@ -71,6 +103,11 @@ public class QuenMatKhau extends javax.swing.JFrame {
         jLabel5.setText("Nhập lại mật khẩu");
 
         jButton2.setText("Đổi mật khẩu");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -157,6 +194,83 @@ public class QuenMatKhau extends javax.swing.JFrame {
     private void matkhaumoi2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matkhaumoi2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_matkhaumoi2ActionPerformed
+Integer otpp= traVeMaOTP();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String emaill = this.email.getText();
+        if (nhanVienServiceInterface.checkEmail(emaill)) {
+            
+            
+            //gửi mail
+            final String username = "ytbcointn@gmail.com";
+            final String password = "qcoymgoecqsbqsvq";
+
+            Properties prop = new Properties();
+            prop.put("mail.smtp.host", "smtp.gmail.com");
+            prop.put("mail.smtp.port", "587");
+            prop.put("mail.smtp.auth", "true");
+            prop.put("mail.smtp.starttls.enable", "true"); //TLS
+
+            //đăng nhập gmail
+            Session session = Session.getInstance(prop,
+                    new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+            });
+
+            try {
+
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(username));
+                message.setRecipients(
+                        Message.RecipientType.TO,
+                        InternetAddress.parse(email.getText())
+                );
+                message.setSubject("Mã đổi mật khẩu");
+                message.setText(Integer.toString(otpp));
+                otpp(otpp);
+                Transport.send(message);
+                JOptionPane.showMessageDialog(this, "vui lòng kiểm tra email");
+                System.out.println("Done");
+                
+                
+
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "email không tồn tại");
+            email.setText("");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(otp.getText().equalsIgnoreCase(Integer.toString(otpp))){
+            //update matkhau trong database
+            if("".equalsIgnoreCase(matkhaumoi1.getText().trim())){
+                JOptionPane.showMessageDialog(this, "Không được để trống");
+            }else{
+                if("".equalsIgnoreCase(matkhaumoi2.getText().trim())){
+                    JOptionPane.showMessageDialog(this, "Không được để trống");
+                }else{
+                    if(matkhaumoi1.getText().trim().equalsIgnoreCase(matkhaumoi2.getText().trim())){
+                        String emai = email.getText();
+                        String mk = matkhaumoi2.getText();
+                        JOptionPane.showMessageDialog(this, nhanVienServiceInterface.updateMatKhau(emai, mk));
+                        setVisible(false);
+                        new DangNhap().setVisible(true);
+                    }else{
+                        JOptionPane.showMessageDialog(this, "nhập lại mật khẩu");
+                    }
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "nhập lại otp");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,6 +297,7 @@ public class QuenMatKhau extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(QuenMatKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
